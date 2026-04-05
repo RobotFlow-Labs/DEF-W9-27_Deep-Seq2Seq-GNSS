@@ -1,0 +1,37 @@
+[random]
+seed = 2025
+
+[data]
+seq_len = 768
+max_sats = 12
+missing_prob = 0.05
+train_size = 67000
+test_size = 1000
+val_size = 1000
+spoof_ratio = 0.2196
+attack_min_duration = 100
+attack_max_duration = 568
+shift_min_m = 300.0
+shift_max_m = 1000.0
+
+[model]
+fusion_mode = "early"
+encoder_type = "mha"
+embedding_dim = 128
+quant_bins = 64
+num_heads = 8
+ff_hidden_dim = 1024
+num_modules = 4
+dropout = 0.1
+
+[train]
+batch_size = 32
+epochs = 20
+learning_rate = 3e-4
+weight_decay = 1e-4
+grad_clip = 1.0
+device = "auto"
+checkpoint_path = "artifacts/checkpoints/model-paper.pt"
+
+[eval]
+threshold = 0.5

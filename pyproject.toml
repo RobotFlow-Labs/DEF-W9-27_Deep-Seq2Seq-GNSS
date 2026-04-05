@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling>=1.24.2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "anima-deep-seq2seq-gnss"
+version = "0.1.0"
+description = "ANIMA defense module: Deep Seq2Seq GNSS spoofing detection"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "AIFLOWLABS ANIMA" }
+]
+dependencies = [
+  "numpy>=1.24",
+  "torch>=2.2",
+  "fastapi>=0.111",
+  "uvicorn>=0.30"
+]
+
+[project.scripts]
+anima-gnss-train = "anima_deep_seq2seq_gnss.train:main"
+anima-gnss-eval = "anima_deep_seq2seq_gnss.evaluate:main"
+anima-gnss-infer = "anima_deep_seq2seq_gnss.infer:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/anima_deep_seq2seq_gnss"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
